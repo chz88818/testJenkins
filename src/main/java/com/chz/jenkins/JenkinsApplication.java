@@ -1,6 +1,7 @@
 package com.chz.jenkins;
 
 import com.chz.jenkins.netty.TCPServer;
+import com.chz.jenkins.socket.ThreadHandler;
 import com.chz.jenkins.socket.ThreadHandlerServer;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.SpringApplication;
@@ -37,7 +38,8 @@ public class JenkinsApplication {
     @GetMapping("/sendMessage")
     public void sendMessage(){
         try {
-            OutputStream outputStream = ThreadHandlerServer.socket.getOutputStream();
+//            OutputStream outputStream = ThreadHandlerServer.socket.getOutputStream();
+            OutputStream outputStream = ThreadHandler.socket.getOutputStream();
             for (int i=0;i<5;i++) {
                 outputStream.write("客户端你好，我是服务端".getBytes(StandardCharsets.UTF_8));
                 outputStream.flush();

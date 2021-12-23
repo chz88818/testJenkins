@@ -21,7 +21,7 @@ public class Socket implements ApplicationRunner {
 
     private static final String IP="localhost";
 
-    private static final Integer PORT =8001;
+    private static final Integer PORT =5080;
 
 
 
@@ -30,6 +30,6 @@ public class Socket implements ApplicationRunner {
     public void run(ApplicationArguments args) throws InterruptedException {
 //        ThreadPoolUtil.getPool().execute(new ThreadHandlerServer());
 //        TimeUnit.SECONDS.sleep(5);
-//        ThreadPoolUtil.getPool().execute(new ThreadHandler(IP,PORT));
+        ThreadPoolUtil.getPool().execute(new ThreadHandler(IP,PORT));
     }
 }

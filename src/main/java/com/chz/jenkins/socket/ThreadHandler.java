@@ -23,7 +23,7 @@ public class ThreadHandler implements Runnable {
 
     private final String ip;
     private final Integer port;
-    private Socket socket;
+    public static Socket socket;
     private DataInputStream dataInputStream;
 
 
