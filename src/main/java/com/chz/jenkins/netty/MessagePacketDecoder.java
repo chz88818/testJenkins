@@ -29,7 +29,7 @@ public class MessagePacketDecoder extends ByteToMessageDecoder
                 byte[] bytesReady = new byte[buffer.readableBytes()];
                 buffer.readBytes(bytesReady);
                 //这之间可以进行报文的解析处理
-                out.add(bytesReady );
+                out.add(bytesReady);
             }
         }finally {
 
