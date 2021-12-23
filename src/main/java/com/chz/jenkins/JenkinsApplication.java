@@ -1,5 +1,6 @@
 package com.chz.jenkins;
 
+import com.chz.jenkins.netty.TCPServer;
 import com.chz.jenkins.socket.ThreadHandlerServer;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.SpringApplication;
@@ -20,6 +21,7 @@ public class JenkinsApplication {
     private String applicationName;
     public static void main(String[] args) {
         SpringApplication.run(JenkinsApplication.class, args);
+
     }
 
     @GetMapping("/get")

@@ -29,7 +29,7 @@ public class Client {
                         socketChannel.pipeline().addLast(new ClientHandler());
                     }
                 });
-        ChannelFuture future = bootstrap.connect("127.0.0.1", 8379).sync();
+        ChannelFuture future = bootstrap.connect("127.0.0.1", 5080).sync();
         future.channel().writeAndFlush(Unpooled.copiedBuffer("777".getBytes()));
         future.channel().closeFuture().sync();
         workerGroup.shutdownGracefully();

@@ -26,6 +26,7 @@ public class TcpServerHandler extends ChannelInboundHandlerAdapter {
         byte[] data = new byte[recvmg.readableBytes()];
         recvmg.readBytes(data);
         String request = new String(data, StandardCharsets.UTF_8);
+        System.out.println("收到客户端消息:"+request);
         //写给客户端
         String response = "我是反馈的信息:收到消息再见";
         ctx.writeAndFlush(Unpooled.copiedBuffer(response.getBytes()));

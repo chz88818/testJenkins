@@ -36,10 +36,10 @@ public class ServerChannelInitializer extends ChannelInitializer<SocketChannel> 
 //                new DelimiterBasedFrameDecoder(1024, Unpooled.copiedBuffer(new byte[] { 0x7e }),
 //                        Unpooled.copiedBuffer(new byte[] { 0x7e })));
         //自定义编解码器
-        pipeline.addLast(
-                new MessagePacketDecoder(),
-                new MessagePacketEncoder()
-        );
+//        pipeline.addLast(
+//                new MessagePacketDecoder(),
+//                new MessagePacketEncoder()
+//        );
         //自定义Hadler
         pipeline.addLast("handler",new TcpServerHandler());
         //自定义Hander,可用于处理耗时操作，不阻塞IO处理线程

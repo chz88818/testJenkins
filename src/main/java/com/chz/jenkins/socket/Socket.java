@@ -28,8 +28,8 @@ public class Socket implements ApplicationRunner {
 
     @Override
     public void run(ApplicationArguments args) throws InterruptedException {
-        ThreadPoolUtil.getPool().execute(new ThreadHandlerServer());
-        TimeUnit.SECONDS.sleep(5);
-        ThreadPoolUtil.getPool().execute(new ThreadHandler(IP,PORT));
+//        ThreadPoolUtil.getPool().execute(new ThreadHandlerServer());
+//        TimeUnit.SECONDS.sleep(5);
+//        ThreadPoolUtil.getPool().execute(new ThreadHandler(IP,PORT));
     }
 }

@@ -9,6 +9,8 @@ import io.netty.channel.socket.nio.NioServerSocketChannel;
 import io.netty.channel.ServerChannel;
 import io.netty.util.concurrent.Future;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.context.annotation.Bean;
+import org.springframework.stereotype.Component;
 
 /**
  * Created by IntelliJ IDEA.
@@ -18,6 +20,7 @@ import lombok.extern.slf4j.Slf4j;
  * @Description:
  */
 @Slf4j
+
 public class TCPServer {
     //端口号
     private int port = 5080;
@@ -27,6 +30,7 @@ public class TCPServer {
     private final EventLoopGroup bossGroup = new NioEventLoopGroup(1);
     //处理hadnler的工作线程，其实也就是处理IO读写 。线程数据默认为 CPU 核心数乘以2
     private final EventLoopGroup workerGroup = new NioEventLoopGroup();
+
 
     public void init() throws Exception {
         //创建ServerBootstrap实例
