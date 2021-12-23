@@ -22,7 +22,11 @@ public class JenkinsApplication {
     private String applicationName;
     public static void main(String[] args) {
         SpringApplication.run(JenkinsApplication.class, args);
-
+        TCPServer tcpServer=new TCPServer();
+        try {
+            tcpServer.init();
+        } catch (Exception e) {
+e.printStackTrace();        }
     }
 
     @GetMapping("/get")
@@ -40,10 +44,14 @@ public class JenkinsApplication {
         try {
 //            OutputStream outputStream = ThreadHandlerServer.socket.getOutputStream();
             OutputStream outputStream = ThreadHandler.socket.getOutputStream();
-            for (int i=0;i<5;i++) {
-                outputStream.write("客户端你好，我是服务端".getBytes(StandardCharsets.UTF_8));
-                outputStream.flush();
+            String s="";
+            StringBuilder stringBuilder=new StringBuilder();
+            for (int i=0;i<700000;i++) {
+                stringBuilder.append("1");
             }
+            s=stringBuilder.toString();
+            outputStream.write(s.getBytes(StandardCharsets.UTF_8));
+            outputStream.flush();
         } catch (IOException e) {
             e.printStackTrace();
         }

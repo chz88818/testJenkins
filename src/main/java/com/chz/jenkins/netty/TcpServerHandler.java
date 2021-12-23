@@ -5,6 +5,7 @@ import io.netty.buffer.Unpooled;
 import io.netty.channel.ChannelHandlerAdapter;
 import io.netty.channel.ChannelHandlerContext;
 import io.netty.channel.ChannelInboundHandlerAdapter;
+import lombok.extern.slf4j.Slf4j;
 
 import java.nio.charset.StandardCharsets;
 
@@ -15,6 +16,7 @@ import java.nio.charset.StandardCharsets;
  * @Date: 2021/12/23/10:02
  * @Description:
  */
+@Slf4j
 public class TcpServerHandler extends ChannelInboundHandlerAdapter {
     public TcpServerHandler() {
     }
@@ -26,11 +28,11 @@ public class TcpServerHandler extends ChannelInboundHandlerAdapter {
         byte[] data = new byte[recvmg.readableBytes()];
         recvmg.readBytes(data);
         String request = new String(data, StandardCharsets.UTF_8);
-        System.out.println("收到客户端消息:"+request);
+        log.info("收到客户端消息:"+request);
+        //System.out.println("收到客户端消息:"+request);
         //写给客户端
         String response = "我是反馈的信息:收到消息再见";
         ctx.writeAndFlush(Unpooled.copiedBuffer(response.getBytes()));
         //ctx.writeAndFlush(recvmg);// 收到及发送，这里如果没有writeAndFlush，上面声明的ByteBuf需要ReferenceCountUtil.release主动释放
-
     }
 }

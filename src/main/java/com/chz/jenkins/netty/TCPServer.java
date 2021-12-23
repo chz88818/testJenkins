@@ -48,7 +48,7 @@ public class TCPServer {
         //绑定端口后，开启监听
         ChannelFuture channelFuture = serverBootstrap.bind(port).sync();
         if (channelFuture.isSuccess()) {
-            System.out.println("TCP服务启动 成功---------------");
+            log.info("TCP服务启动 成功---------------");
         }
     }
 

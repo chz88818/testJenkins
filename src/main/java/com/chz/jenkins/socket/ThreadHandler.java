@@ -48,9 +48,10 @@ public class ThreadHandler implements Runnable {
                 while ((len = dataInputStream.read(bytes)) != -1) {
                     String message = new String(bytes, 0, len);
                     allMsg = allMsg + message;
-                    System.out.println(allMsg);
+//                    System.out.println(allMsg);
+                    log.info(allMsg);
                 }
-                System.out.println(allMsg);
+
             } catch (IOException e) {
                 log.info("socket连接异常,5秒后重连..........");
 
