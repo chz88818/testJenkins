@@ -20,36 +20,38 @@ public class JenkinsApplication {
 
     @Value("${spring.application.name}")
     private String applicationName;
+
     public static void main(String[] args) {
         SpringApplication.run(JenkinsApplication.class, args);
-        TCPServer tcpServer=new TCPServer();
+        TCPServer tcpServer = new TCPServer();
         try {
             tcpServer.init();
         } catch (Exception e) {
-e.printStackTrace();        }
+            e.printStackTrace();
+        }
     }
 
     @GetMapping("/get")
-    public String testJenkins(){
+    public String testJenkins() {
         return applicationName;
     }
 
     @GetMapping("/getIds")
-    public String[] getIds(@RequestParam("ids") String[] ids){
+    public String[] getIds(@RequestParam("ids") String[] ids) {
         return ids;
     }
 
     @GetMapping("/sendMessage")
-    public void sendMessage(){
+    public void sendMessage() {
         try {
 //            OutputStream outputStream = ThreadHandlerServer.socket.getOutputStream();
             OutputStream outputStream = ThreadHandler.socket.getOutputStream();
-            String s="";
-            StringBuilder stringBuilder=new StringBuilder();
-            for (int i=0;i<700000;i++) {
-                stringBuilder.append("1");
-            }
-            s=stringBuilder.toString();
+            String s = "";
+            StringBuilder stringBuilder = new StringBuilder();
+
+            stringBuilder.append("shabi");
+
+            s = stringBuilder.toString();
             outputStream.write(s.getBytes(StandardCharsets.UTF_8));
             outputStream.flush();
         } catch (IOException e) {

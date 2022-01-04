@@ -20,7 +20,7 @@ import java.nio.charset.StandardCharsets;
 public class TcpServerHandler extends ChannelInboundHandlerAdapter {
     public TcpServerHandler() {
     }
-
+private final StringBuilder stringBuilder=new StringBuilder();
     @Override
     public void channelRead(ChannelHandlerContext ctx, Object source) throws Exception {
         // 拿到传过来的msg数据，开始处理
@@ -28,7 +28,16 @@ public class TcpServerHandler extends ChannelInboundHandlerAdapter {
         byte[] data = new byte[recvmg.readableBytes()];
         recvmg.readBytes(data);
         String request = new String(data, StandardCharsets.UTF_8);
+        MessageHandler messageHandler=new MessageHandler();
+        messageHandler.setMessage(request);
         log.info("收到客户端消息:"+request);
+        stringBuilder.append(request);
+        if(request.endsWith("}@")){
+            String s = messageHandler.setMessage(stringBuilder.toString());
+            System.out.println(s);
+            messageHandler.messageHandler();
+            stringBuilder.delete(0, stringBuilder.length());
+        }
         //System.out.println("收到客户端消息:"+request);
         //写给客户端
         String response = "我是反馈的信息:收到消息再见";
